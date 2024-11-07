@@ -16,6 +16,11 @@
 
 # production
 */build
+*/dist
+*/.build
+*/.dist
+*/.cache
+*/.serverless
 
 # misc
 */.DS_Store

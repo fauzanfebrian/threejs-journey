@@ -10,7 +10,7 @@ const scene = new THREE.Scene()
  * Object
  */
 const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+const material = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
@@ -19,21 +19,30 @@ scene.add(mesh)
  */
 const sizes = {
     width: 800,
-    height: 600
+    height: 600,
 }
 
 /**
  * Camera
  */
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
+const camera = new THREE.PerspectiveCamera(40, sizes.width / sizes.height)
+
 camera.position.z = 3
+camera.position.y = -1.5
+camera.position.x = -0.2
+
+camera.rotateX(0.5)
+camera.rotateY(1)
+
+camera.lookAt(0, 0, 0)
+
 scene.add(camera)
 
 /**
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+    canvas: canvas,
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
